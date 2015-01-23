@@ -115,8 +115,8 @@
             break;
     }
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+       // dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         dispatch_async(dispatch_get_main_queue(), ^{
             [alertBanner showAlertBanner];
             
@@ -124,7 +124,7 @@
                 [self performSelector:@selector(hideAlertBanner:) withObject:alertBanner afterDelay:delay];
             }
         });
-    });
+    //});
 }
 
 - (void)hideAlertBanner:(ALAlertBanner *)alertBanner {
@@ -158,12 +158,12 @@
                 break;
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            //dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [alertBanner hideAlertBanner];
             });
-        });
+        //});
     }
 }
 
